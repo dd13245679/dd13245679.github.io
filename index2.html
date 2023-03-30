@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>登录页面</title>
+	<meta charset="UTF-8">
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		form {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.3);
+			width: 300px;
+			margin: 0 auto;
+		}
+		h2 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"],
+		input[type="password"] {
+			padding: 5px;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-top: 10px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+		input[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+		.error {
+			color: red;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<form method="post">
+		<h2>登录</h2>
+		<label>用户名:</label>
+		<input type="text" name="username" required>
+		<label>密码:</label>
+		<input type="password" name="password" required>
+		<div class="error" id="error"></div>
+		<input type="submit" value="登录" onclick="validate(event)">
+	</form>
+
+	<script>
+		function validate(event) {
+			event.preventDefault();
+			const username = document.querySelector('input[name="username"]').value;
+			const password = document.querySelector('input[name="password"]').value;
+			const errorDiv = document.getElementById("error");
+			if (username === "" || password === "") {
+				errorDiv.innerHTML = "用户名和密码不能为空";
+			} else if (username !== "admin" || password !== "password") {
+				errorDiv.innerHTML = "用户名或密码不正确";
+			} else {
+				// 登录成功，跳转到首页或其他页面
+				window.location.href = "https://example.com";
+			}
+		}
+	</script>
+</body>
+</html>
